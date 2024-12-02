@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма регистрации</title>
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabriela&family=Poiret+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="menu_footer.css">
+    <style>
+       
+:root {
+    --square-size: 10vw; /* Процент от ширины экрана */
+    --animation-duration: 10s;
+}
+
+
+        /* Анимация квадратов */
+        .background::before,
+        .background::after,
+        .background .square-1,
+        .background .square-2 {
+            content: '';
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.36);
+            border-radius: 10px;
+            animation: float var(--animation-duration) ease-in-out infinite;
+        }
+
+        .background::before {
+            width: var(--square-size);
+            height: var(--square-size);
+            top: 15%;
+            left: 10%;
+            animation-duration: calc(var(--animation-duration) + 2s);
+        }
+
+        .background::after {
+            width: var(--square-size);
+            height: var(--square-size);
+            top: 70%;
+            left: 80%;
+            animation-duration: calc(var(--animation-duration) - 2s);
+        }
+
+             
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-20px) translateX(20px);
+            }
+        }
+
+
+body {
+    display: flex;
+   
+    align-items: center;
+    background-color: #1e1e1e;
+    font-family: "Poiret One", serif;
+    flex-direction: column;
+    background: linear-gradient(to bottom,  #f39c12, #FFF);
+    background-size: cover; /* Убедиться, что охватывает всю высоту */
+    background-repeat: no-repeat; /* Отключить повтор */
+}
+
+
+main{
+    width: 100%;
+    position: relative;
+    margin-bottom: 40px;
+ 
+}
+
+.background {
+    
+    width: 100%;
+    height: 100%;
+}
+
+.login {
+    
+    width: 70%; /* Делаем ширину адаптивной */
+    max-width: 600px; /* Увеличиваем ширину для широких экранов */
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.login h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.form-group {
+    display: grid;
+    gap: 20px;
+}
+
+.input-box {
+    position: relative;
+}
+
+.input-box input,
+.input-box textarea {
+    width: 100%;
+    padding: 10px;
+    background: rgba(50, 50, 50, 0.051);
+    border: none;
+    border-bottom: 2px solid #ff2600;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    color: rgb(255, 255, 255);
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label,
+.input-box textarea:focus ~ label,
+.input-box textarea:valid ~ label {
+    top: -10px;
+    color: #ff2600;
+    font-size: 12px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff2600;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #8b0000;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.links a {
+    color: #ff2600;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (min-width: 713px) {
+    .form-group {
+        grid-template-columns: 1fr 1fr; /* Две колонки для широких экранов */
+    }
+    .input-box:nth-child(5) {
+        grid-column: span 2; /* Сообщение занимает всю ширину */
+    }
+
+
+}
+
+@media (max-width: 712px) {
+    .form-group {
+        grid-template-columns: 1fr; /* Одна колонка для узких экранов */
+    }
+
+   
+}
+</style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+          <div class="logo">МирТанца</div>
+          <button class="menu-toggle" aria-label="Toggle menu">
+            ☰
+          </button>
+          <ul class="menu">
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="styles.html">Стили и направления</a></li>
+            <li><a href="about.html">О НАС</a></li>
+            <li><a href="merch.html">Мерч</a></li>
+            <li><a href="form.html">Пробное занятие</a></li>
+          </ul>
+        </nav>
+      </header>
+    
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('active');
+  });
+});
+
+      </script>
+<main>
+<div class="background">
+<div class="login">
+    <h2>Запись на пробное занятие:</h2>
+    <form action="#">
+        <div class="form-group">
+            <div class="input-box">
+                <input type="text" required>
+                <label>ФИО</label>
+            </div>
+            <div class="input-box">
+                <input type="text" required>
+                <label>Возраст</label>
+            </div>
+            <div class="input-box">
+                <input type="email" required>
+                <label>Почта</label>
+            </div>
+            <div class="input-box">
+                <input type="tel" pattern="[0-9]{10}"  required>
+                <label>Телефон</label>
+            </div>
+
+            <div class="input-box">
+                <textarea required rows="4"></textarea>
+                <label>Напишите о Вашем опыте в танце</label>
+            </div>
+        </div>
+        <button type="submit">Отправить</button>
+    </form>
+</div>
+</div>
+</main>
+<footer class="footer-container">
+    <div class="footer-column about">
+        <h3>Начни танцевать сегодня!</h3>
+        <p>Танец — это путь к гармонии с собой и окружающим миром. 
+            Присоединяйтесь к нашим занятиям и откройте для себя новый источник радости и вдохновения. </p>
+    </div>
+    <div class="footer-column quick-links">
+        <h3>Навигация</h3>
+        <ul>
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="styles.html">Стили и направления</a></li>
+            <li><a href="about.html">О НАС</a></li>
+            <li><a href="merch.html">Мерч</a></li>
+            <li><a href="form.html">Пробное занятие</a></li>
+        </ul>
+    </div>
+    <div class="footer-column shop">
+        <h3>Занятия</h3>
+        <ul>
+            <li><a href="#">Бальные танцы</a></li>
+            <li><a href="#">Контемп</a></li>
+            <li><a href="#">Класический танец</a></li>
+            <li><a href="#">Современный танец</a></li>
+        </ul>
+    </div>
+    <div class="footer-column contact">
+        <h3>Контактная информация</h3>
+        <p>г.Москва, ул.Лабочевского, д.24</p>
+        <p>+7 978 714-70-06</p>
+        <p>kotlyar2006@gmail.ru</p>
+        <div class="social-icons">
+            <a href="#"><i class="icon fab fa-youtube"></i></a>
+            <a href="#"><i class="icon fab fa-vk"></i></a>
+            <a href="#"><i class="icon fab fa-telegram"></i></a>
+            <a href="#"><i class="icon fas fa-user"></i></a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

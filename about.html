@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма регистрации</title>
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabriela&family=Poiret+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="menu_footer.css">
+    <style>
+       
+
+body {
+    display: flex;
+   
+    
+    
+    font-family: "Poiret One", serif;
+    flex-direction: column;
+    background: linear-gradient(  #f39c12, #ffffff);
+    background-size: cover; /* Убедиться, что охватывает всю высоту */
+    background-repeat: no-repeat; /* Отключить повтор */
+    
+}
+
+
+main{
+    width: 100%;
+    position: relative;
+    margin-bottom: 40px;
+ 
+}
+
+.box {
+  display: flex;
+  flex-wrap: wrap; /* Для переноса на узких экранах */
+}
+
+.box1, .box2 {
+  flex: 1; /* По умолчанию элементы равной ширины */
+}
+
+.box1 {
+  order: 1; /* Порядок элемента по умолчанию */
+}
+
+.box2 {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: auto;
+            text-align: justify;
+            color: #fff;
+            
+}
+
+.text2{
+    width: 85%;
+}
+
+@media (max-width: 850px) {
+  .box {
+    flex-direction: column; /* Вертикальное расположение на узких экранах */
+  }
+
+  .box1 {
+    width: 100%;
+    order: 2; /* Меняем порядок, чтобы box2 был над box1 */
+  }
+
+  .box2 {
+    order: 1;
+    margin-bottom: 20px;
+  }
+}
+
+.box2 p{
+    width: 100%;
+}
+.box1 {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: auto;
+        }
+
+        /* Основное изображение */
+        #mainImage {
+            width: 85%;
+            border-radius: 10px;
+            height: auto;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+        }
+
+        /* Стили для миниатюр */
+        .thumbnail-container {
+            display: flex;
+            justify-content: space-between;
+            width: 85%;
+            
+            gap: 10px;
+            
+        }
+
+        .thumbnail {
+            border-radius: 10px;
+            width: 18%;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.1);
+            border: 2px solid #fff;
+        }
+
+
+.video-library {
+    text-align: center;
+    
+    width: 92%;
+    margin: auto;
+}
+
+.video-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    margin: auto;
+}
+
+.video-card {
+   width: 31%;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.video-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 2px solid #333;
+}
+
+h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #ffffff;
+
+}
+
+h1{
+    color: #ffffff;
+margin-bottom: 20px;
+}
+h2 {
+    margin: 20px 0;
+    color: #ffffff;
+}
+
+li {
+    font-weight: bold;
+}
+
+ul{
+    font-style: normal;
+}
+.text {
+    margin: 30px;
+    color: #ffffff;
+    text-align: justify;
+    width: 92%;
+}
+
+
+
+@media (max-width: 850px) {
+    .video-library {
+        width: 85%;
+    }
+
+    .video-card {
+        border-radius: 8px;
+        width: 100%;
+        margin-bottom: 20px ;
+    }
+
+    .video-grid{
+        flex-direction: column;
+        align-items: center;
+        
+    }
+
+    h3 {
+        font-size: 1em;
+    }
+
+    .text {
+        
+        width: 85%;
+    }
+}
+
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 70px ;
+    width: 92%;
+}
+
+.map {
+    width: 45%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.contact-info {
+    width: 45%;
+    padding: 20px;
+    
+}
+
+.contact-info h2 {
+    margin-top: 0;
+    color: #ff9d00;
+}
+
+.contact-info p {
+    margin: 8px 0;
+    color: #f39c12;
+    line-height: 1.6;
+}
+
+@media (max-width: 859px) {
+    .contact-container {
+        flex-direction: column;
+        align-items: stretch;
+        width: 85%;
+    }
+
+    .contact-info, .map {
+width: 100%;
+    }
+
+    
+}
+
+</style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+          <div class="logo">МирТанца</div>
+          <button class="menu-toggle" aria-label="Toggle menu">
+            ☰
+          </button>
+          <ul class="menu">
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="styles.html">Стили и направления</a></li>
+            <li><a href="about.html">О НАС</a></li>
+            <li><a href="merch.html">Мерч</a></li>
+            <li><a href="form.html">Пробное занятие</a></li>
+          </ul>
+        </nav>
+      </header>
+    
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('active');
+  });
+});
+
+      </script>
+<main>
+    <div class="text">
+        <h1>Танцевальная студия "МирТанца" </h1>
+        <p>
+    Добро пожаловать в "МирТанца" – студию, где ваши мечты о танцах становятся реальностью! Наша миссия – создать место, где каждый сможет раскрыть свой творческий потенциал, освоить искусство танца и получить заряд энергии и удовольствия.
+        </p>
+    </div>
+    
+    <div class="box">
+    <div class="box1">
+        <!-- Основное изображение -->
+        <img id="mainImage" src="рис1.jpg" alt="Main Image">
+    
+        <!-- Контейнер миниатюр -->
+        <div class="thumbnail-container">
+            <img class="thumbnail" src="рис1.jpg" alt="Thumbnail 1" onclick="changeImage('рис1.jpg')">
+            <img class="thumbnail" src="рис2.jpg" alt="Thumbnail 2" onclick="changeImage('рис2.jpg')">
+            <img class="thumbnail" src="рис3.jpg" alt="Thumbnail 3" onclick="changeImage('рис3.jpg')">
+            <img class="thumbnail" src="рис4.jpg" alt="Thumbnail 4" onclick="changeImage('рис4.jpg')">
+            <img class="thumbnail" src="рис5.jpg" alt="Thumbnail 5" onclick="changeImage('рис5.jpg')">
+        </div>
+    
+        <script>
+            // Функция для изменения основного изображения
+            function changeImage(imageSrc) {
+                console.log("Changing image to:", imageSrc); // Добавлено для отладки
+                const mainImage = document.getElementById("mainImage");
+    
+                if (mainImage) {
+                    mainImage.src = imageSrc;
+                } else {
+                    console.error("Элемент с id='mainImage' не найден.");
+                }
+            }
+
+            function changeImage(imageSrc, text) {
+    const mainImage = document.getElementById("mainImage");
+    const dynamicText = document.getElementById("dynamicText");
+
+    if (mainImage) {
+        mainImage.src = imageSrc;
+    }
+    if (dynamicText) {
+        dynamicText.textContent = text;
+    }
+}
+        </script>
+    </div>
+
+    <div class="box2">
+        <div class="text2">
+            <h2>Чем мы гордимся?</h2>
+            <h3>Мероприятия и выступления.</h3>
+            <p>
+                "МирТанца" регулярно организует мастер-классы, конкурсы, отчетные концерты и тематические вечеринки. Наши ученики выступают на городских фестивалях и занимают призовые места на танцевальных чемпионатах.
+            </p>
+            <h3>Дружная атмосфера.</h3>
+            <p>   
+                "МирТанца" – это больше, чем студия. Это сообщество единомышленников, которые поддерживают друг друга, радуются успехам и вдохновляют на новые достижения.
+            </p>  
+            <h3>Индивидуальный подход.</h3>  
+            <p>    
+                Мы учитываем цели и уровень подготовки каждого ученика, будь то первый шаг на паркете или совершенствование мастерства для профессиональной карьеры.</p>
+        
+        </div>
+        </div>
+</div>
+<div class="text">
+<h2>Почему выбирают "МирТанца"?</h2>
+<ol>
+    <li>Широкий выбор направлений.</li>
+    <p> </p>
+    "МирТанца" предлагает занятия для детей и взрослых по разнообразным танцевальным стилям:
+    <ul>
+        <li>Элегантные бальные танцы для.</li>
+        <li>Эмоциональные современные танцы.</li>
+        <li>Зажигательные народные танцы.</li>
+        <li>Изящные классические танцы.</li>
+    </ul>
+    
+    <li>Профессиональные педагоги.</li>
+    <p> </p>
+    <p>Команда "МирТанца" – это опытные хореографы, которые искренне любят свое дело. Они помогут вам освоить базовые движения, усовершенствовать технику и вдохновят на танцевальные свершения.</p>
+    
+    <li>Комфортные условия для занятий.</li>
+    <p> </p>
+    <p>Студия оборудована всем необходимым: просторные залы с зеркалами, качественное музыкальное сопровождение, удобные раздевалки. В "МирТанца" всё продумано для вашего комфорта и вдохновения.</p>
+
+</ol>
+</div>
+    
+    <div class="video-library">
+        <h2>Наши работы</h2>
+        <div class="video-grid">
+            <div class="video-card">
+                <video src="видео1.MOV" controls></video>
+                <h3>SEAR</h3>
+                
+            </div>
+            <div class="video-card">
+                <video src="видео2.mp4" controls></video>
+                <h3>День за днем</h3>
+                
+            </div>
+            <div class="video-card">
+                <video src="видео3.mp4" controls></video>
+                <h3>Будни</h3>
+                
+            </div>
+            
+        </div>
+    </div>
+    <script >
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.video-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mouseover', () => {
+            card.style.boxShadow = '0 10px 20px rgba(255, 255, 255, 0.4)';
+        });
+
+        card.addEventListener('mouseout', () => {
+            card.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+        });
+    });
+});
+
+    </script>
+
+<div class="contact-container">
+    <div class="map">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2030.3328530125566!2d37.503721364626!3d55.67027221918796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54d041e085b2b%3A0x7f112cff6157c18b!2z0YPQuy4g0JzQuNGF0LDQuNC70LAg0J_QtdCy0YbQvtCy0LAsIDI0LCDQnNC-0YHQutCy0LAsINCg0L7RgdGB0LjRjywgMTE5NDE1!5e0!3m2!1sru!2suk!4v1732898404832!5m2!1sru!2suk"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="contact-info">
+        <h2>Наши Контакты</h2>
+        <p><strong>Адресс:</strong> г.Москва, ул.Лабочевского, д.24 </p>
+        <p><strong>Телефон:</strong> +7 978 714-70-06 </p>
+        <p><strong>Электронная почта:</strong> kotlyar2006@gmail.ru </p>
+        <p><strong>Часы работы:</strong> Пн - Пт, 9:00 - 17:00</p>
+    </div>
+</div>
+
+</main>
+<footer class="footer-container">
+    <div class="footer-column about">
+        <h3>Начни танцевать сегодня!</h3>
+        <p>Танец — это путь к гармонии с собой и окружающим миром. 
+            Присоединяйтесь к нашим занятиям и откройте для себя новый источник радости и вдохновения. </p>
+    </div>
+    <div class="footer-column quick-links">
+        <h3>Навигация</h3>
+        <ul>
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="styles.html">Стили и направления</a></li>
+            <li><a href="about.html">О НАС</a></li>
+            <li><a href="merch.html">Мерч</a></li>
+            <li><a href="form.html">Пробное занятие</a></li>
+        </ul>
+    </div>
+    <div class="footer-column shop">
+        <h3>Занятия</h3>
+        <ul>
+            <li><a href="#">Бальные танцы</a></li>
+            <li><a href="#">Контемп</a></li>
+            <li><a href="#">Класический танец</a></li>
+            <li><a href="#">Современный танец</a></li>
+        </ul>
+    </div>
+    <div class="footer-column contact">
+        <h3>Контактная информация</h3>
+        <p>г.Москва, ул.Лабочевского, д.24</p>
+        <p>+7 978 714-70-06</p>
+        <p>kotlyar2006@gmail.ru</p>
+        <div class="social-icons">
+            <a href="#"><i class="icon fab fa-youtube"></i></a>
+            <a href="#"><i class="icon fab fa-vk"></i></a>
+            <a href="#"><i class="icon fab fa-telegram"></i></a>
+            <a href="#"><i class="icon fas fa-user"></i></a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

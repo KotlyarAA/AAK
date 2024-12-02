@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практика 11</title>
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabriela&family=Poiret+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="menu_footer.css">
+    <style>
+        body {
+            
+            display: flex;
+            
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fcfbf8;
+            font-family: "Poiret One", serif;
+        }
+        .container1 {
+            width: 90%;
+            margin-top: 0px;
+    
+            
+            padding: 20px;
+            border-radius: 8px;
+           
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-top: 1px solid #f39c12;
+        }
+        .section h2 {
+            color: #574824;
+            font-size: 1.2em;
+        }
+        main button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #f39c12;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-family: "Poiret One", serif;
+        }
+        main button:hover {
+            background-color: #ff2600;
+        }
+        .output {
+            margin-top: 10px;
+            padding: 10px;
+            background: #fff3e8;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            color: #333;
+            font-family: monospace;
+        }
+        input[type="number"] {
+            padding: 8px;
+            margin: 5px;
+            width: 100px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            border: 1px solid #fae2c5;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .product-name {
+            font-weight: bold;
+            margin-top: 10px;
+            color: #333;
+        }
+        .product-price {
+            color: #982404;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        #cartIcon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffa200;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 1.5em;
+            text-align: center;
+        }
+        #cartDetails {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background-color: white;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+            margin-top: 20px;
+            }
+        }
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+          <div class="logo">МирТанца</div>
+          <button class="menu-toggle" aria-label="Toggle menu">
+            ☰
+          </button>
+          <ul class="menu">
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="styles.html">Стили и направления</a></li>
+            <li><a href="about.html">О НАС</a></li>
+            <li><a href="merch.html">Мерч</a></li>
+            <li><a href="form.html">Пробное занятие</a></li>
+        </ul>
+        </nav>
+      </header>
+    
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('active');
+  });
+});
+
+      </script>
+
+<main>
+    <div class="container1">
+
+        <h1>Нащ Мерч</h1>
+
+        <!-- Секция управления товарами -->
+        <div class="section">
+            <h2>Товары</h2>
+            <button onclick="sortAscending()">Сортировать по возрастанию</button>
+            <button onclick="sortDescending()">Сортировать по убыванию</button>
+            <br><br>
+            <label>Минимальная цена:</label>
+            <input type="number" id="minPrice" placeholder="Введите мин. цену">
+            <label>Максимальная цена:</label>
+            <input type="number" id="maxPrice" placeholder="Введите макс. цену">
+            <button onclick="applyFilter()">Применить фильтр</button>
+            <div class="product-grid" id="productsOutput"></div>
+        </div>
+    </div>
+
+    <!-- Иконка корзины -->
+    <div id="cartIcon" onclick="toggleCartDetails()">🛒 (<span id="cartCount">0</span>)</div>
+    <div id="cartDetails">
+        <h3>Содержимое корзины</h3>
+        <div id="cartOutput">Корзина: []</div>
+        <div id="totalCostOutput">Общая стоимость: 0 руб.</div>
+        <button onclick="clearCart()">Очистить корзину</button>
+        <a href="order.html"><button>Купить</button></a>
+    </div>
+
+    <script>
+        let products = [
+            { id: 1, name: "Футболка (бежевая)", price: 600, image: "Рисунок1.png" },
+            { id: 2, name: "Футболка (бордовая)", price: 600, image: "Рисунок2.png" },
+            { id: 3, name: "Футболка (черная)", price: 600, image: "Рисунок3.png" },
+            { id: 4, name: "Пайта (белая)", price: 1200, image: "Рисунок4.png" },
+            { id: 5, name: "Лонгслив (бордовый)", price: 900, image: "Рисунок5.png" },
+            { id: 6, name: "Пайта (бордовая)", price: 1200, image: "Рисунок6.png" },
+            { id: 7, name: "Футболка-поло (бордовая)", price: 750, image: "Рисунок7.png" },
+            { id: 8, name: "Штаны (черные)", price: 950, image: "Рисунок8.png" },
+         ];
+
+        let cart = [];
+
+        function displayProducts(filteredProducts = products) {
+            let output = filteredProducts.map(product => {
+                return `
+                    <div class="product-card" draggable="true" ondragstart="startDrag(${product.id})">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-price">${product.price} руб.</div>
+                        <button onclick="addToCart(${product.id})">Добавить в корзину</button>
+                    </div>
+                `;
+            }).join("");
+            document.getElementById("productsOutput").innerHTML = output;
+        }
+
+        function addToCart(productId) {
+            let product = products.find(p => p.id === productId);
+            let itemInCart = cart.find(item => item.id === productId);
+            if (itemInCart) {
+                itemInCart.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            updateCartCount();
+            displayCart();
+        }
+
+        function updateCartCount() {
+            let totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById("cartCount").innerText = totalCount;
+        }
+
+        function displayCart() {
+            if (cart.length === 0) {
+                document.getElementById("cartOutput").innerHTML = "Корзина: []";
+                return;
+            }
+            let output = cart.map(item => `
+                ${item.name} - ${item.price} руб. x ${item.quantity} 
+                <button onclick="removeFromCart(${item.id})">Удалить</button>
+            `).join("<br>");
+            document.getElementById("cartOutput").innerHTML = output;
+            calculateTotalCost();
+        }
+
+        function calculateTotalCost() {
+            let totalCost = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            document.getElementById("totalCostOutput").innerText = "Общая стоимость: " + totalCost + " руб.";
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartCount();
+            displayCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCartCount();
+            displayCart();
+            calculateTotalCost()
+        }
+
+        function toggleCartDetails() {
+            let cartDetails = document.getElementById("cartDetails");
+            cartDetails.style.display = cartDetails.style.display === "none" || cartDetails.style.display === "" ? "block" : "none";
+        }
+
+        let draggedItemId;
+
+        function startDrag(productId) {
+            draggedItemId = productId;
+        }
+
+        document.getElementById("cartIcon").addEventListener("drop", function() {
+            addToCart(draggedItemId);
+        });
+
+        document.getElementById("cartIcon").addEventListener("dragover", function(event) {
+            event.preventDefault();
+        });
+
+        function sortAscending() {
+            products.sort((a, b) => a.price - b.price);
+            displayProducts();
+        }
+
+        function sortDescending() {
+            products.sort((a, b) => b.price - a.price);
+            displayProducts();
+        }
+
+        function applyFilter() {
+            let minPrice = parseFloat(document.getElementById("minPrice").value);
+            let maxPrice = parseFloat(document.getElementById("maxPrice").value);
+
+            if (isNaN(minPrice) || isNaN(maxPrice)) {
+                alert("Введите корректные значения для фильтра.");
+                return;
+            }
+
+            let filteredProducts = products.filter(product => product.price >= minPrice && product.price <= maxPrice);
+            displayProducts(filteredProducts);
+        }
+
+        displayProducts();
+    </script>
+
+</main>
+    
+<footer class="footer-container">
+    <div class="footer-column about">
+        <h3>Начни танцевать сегодня!</h3>
+        <p>Танец — это путь к гармонии с собой и окружающим миром. 
+            Присоединяйтесь к нашим занятиям и откройте для себя новый источник радости и вдохновения. </p>
+    </div>
+    <div class="footer-column quick-links">
+        <h3>Навигация</h3>
+        <ul>
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="styles.html">Стили и направления</a></li>
+            <li><a href="about.html">О НАС</a></li>
+            <li><a href="merch.html">Мерч</a></li>
+            <li><a href="form.html">Пробное занятие</a></li>
+        </ul>
+    </div>
+    <div class="footer-column shop">
+        <h3>Занятия</h3>
+        <ul>
+            <li><a href="styles.html">Бальные танцы</a></li>
+            <li><a href="styles.html">Контемп</a></li>
+            <li><a href="styles.html">Класический танец</a></li>
+            <li><a href="styles.html">Современный танец</a></li>
+        </ul>
+    </div>
+    <div class="footer-column contact">
+        <h3>Контактная информация</h3>
+        <p>г.Москва, ул.Лабочевского, д.24</p>
+        <p>+7 978 714-70-06</p>
+        <p>kotlyar2006@gmail.ru</p>
+        <div class="social-icons">
+            <a href="#"><i class="icon fab fa-youtube"></i></a>
+            <a href="#"><i class="icon fab fa-vk"></i></a>
+            <a href="#"><i class="icon fab fa-telegram"></i></a>
+            <a href="#"><i class="icon fas fa-user"></i></a>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>

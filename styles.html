@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabriela&family=Poiret+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="menu_footer.css">
+<title>Главная</title>
+<style>
+
+
+
+.container {
+ 
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 25px;
+    padding: 40px;
+    width: 100%;
+    height: 100vh; /* Высота контейнера для лучшего отображения */
+}
+
+.item {
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: background-color 0.7s;
+    animation: fadeIn 1s ease-in-out forwards;
+    opacity: 0;
+    background-size: cover;
+    position: relative;
+        width: 100%; 
+        height: 100%; 
+        overflow: hidden;
+        display: flex;
+}
+
+
+
+      .item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        transition: filter 0.3s ease;
+        z-index: 1;
+      }
+
+      .item2::before {
+        background-image: url('https://i.pinimg.com/736x/59/a4/5a/59a45acff9db0806ee86b8e2807b5fac.jpg');
+      }
+
+      .item3::before {
+        background-image: url('https://i.pinimg.com/736x/8f/27/64/8f2764324649f3f2b9bc85ce4c2e23ce.jpg');
+      }
+
+      .item4::before {
+        background-image: url('https://i.pinimg.com/564x/e2/46/c7/e246c76dd3497ee15ed92c3d9924a185.jpg');
+      }
+
+      .item5::before {
+        background-image: url('https://i.pinimg.com/736x/87/97/c3/8797c3812f2cdf104fd4a06de943e7bf.jpg');
+      }
+
+      .item:hover::before {
+        filter: blur(5px);
+      }
+
+      .style-text {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: white;
+      }
+
+      .additional-text {
+        display: none;
+      }
+
+      .item:hover .additional-text {
+        display: block;
+      }
+
+ /* Анимация появления */
+ @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(20px);
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+
+
+/* Задаём размеры и позиции для каждого элемента */
+.item1 {
+    grid-column: 1/3;
+    grid-row: 1/3;
+    animation-delay: 0.3s;
+    background-color: #f39c12;
+ 
+}
+
+
+
+.item2 {
+    grid-column: 3;
+    grid-row: 1/6;
+    animation-delay: 0.7s;
+    
+ 
+}
+
+.item3 {
+    grid-column: 4;
+    grid-row: 1/6;
+    animation-delay: 1.1s;
+   }
+
+.item4 {
+    grid-column: 1;
+    grid-row: 3/9;
+    animation-delay: 1.5s;
+   }
+
+.item5 {
+    grid-column: 2;
+    grid-row: 3/9;
+    animation-delay: 1.9s;
+   }
+
+
+.item6 {
+    grid-column: 3/5;
+    grid-row: 6/8;
+    animation-delay: 2.3s;
+    background-color: #f39c12;}
+
+    .item7 {
+    grid-column: 3/5;
+    grid-row: 8;
+    animation-delay: 2.5s;
+    background-color: #ff2600;}
+
+
+.item7:hover {
+    background-color: #8b0000;
+    transition: transform 0.4s ease;
+    transform: scale(1.1);
+  }
+
+/* Адаптивность для средних экранов */
+@media (max-width: 1000px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(9, 1fr);
+        height: 150vh ;
+      }
+
+/* Задаём размеры и позиции для каждого элемента */
+.item1 {
+    grid-column: 1/3;
+    grid-row: 1;
+    }
+
+
+
+.item2 {
+    grid-column: 1;
+    grid-row: 2/5;
+    }
+
+.item3 {
+    grid-column: 2;
+    grid-row: 2/5;
+    }
+
+.item4 {
+    grid-column: 1;
+    grid-row: 5/8;
+   }
+
+.item5 {
+    grid-column: 2;
+    grid-row: 5/8;
+    }
+
+
+
+.item6 {
+    grid-column: 1/3;
+    grid-row: 8;
+    }
+
+  
+
+  .item7 {
+    grid-column: 1/3;
+    grid-row: 9;
+    }
+  
+  }
+  
+  
+  /* Мобильный вид */
+  @media (max-width: 700px) {
+    .container {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(17, 1fr);
+        height: 300vh ;
+    }
+
+/* Задаём размеры и позиции для каждого элемента */
+.item1 {
+    grid-column: 1;
+    grid-row: 1/3;
+    
+    }
+
+
+
+.item2 {
+    grid-column: 1;
+    grid-row: 3/6;
+    }
+
+.item3 {
+    grid-column: 1;
+    grid-row: 6/9;
+    }
+
+.item4 {
+    grid-column: 1;
+    grid-row: 9/12;
+   }
+
+.item5 {
+    grid-column: 1;
+    grid-row: 12/15;
+    }
+
+
+
+.item6 {
+    grid-column: 1;
+    grid-row: 15/17;
+    }
+
+
+
+  .item7 {
+    grid-column: 1;
+    grid-row: 17;
+    }
+  }
+  
+  a {
+    text-decoration: none; /* Убирает подчеркивание */
+  }
+
+  .Zagolovok{
+    display: flex;
+    width: 100%;
+  }
+  .Zagolovok h1 {
+  padding-left: 40px;
+  float:left;
+}
+
+
+
+</style>
+
+
+
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+          <div class="logo">МирТанца</div>
+          <button class="menu-toggle" aria-label="Toggle menu">
+            ☰
+          </button>
+          <ul class="menu">
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="styles.html">Стили и направления</a></li>
+            <li><a href="about.html">О НАС</a></li>
+            <li><a href="merch.html">Мерч</a></li>
+            <li><a href="form.html">Пробное занятие</a></li>
+          </ul>
+        </nav>
+      </header>
+    
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('active');
+  });
+});
+
+      </script>
+
+<main>
+  <div class="Zagolovok"><h1> Стили и направления </h1></div>
+  
+    <div class="container">
+        
+    <div class="item item1">
+        <div class="style-text"> Добро пожаловать в В МИР ТАНЦА! Мы предлагаем занятия для всех уровней подготовки в различных направлениях: от утончённых бальных и классических танцев до зажигательных народных и современных стилей. </div>
+    </div>
+        
+    
+    <div class="item item2">
+        <div class="style-text"><h1>Современные танцы</h1><div class="additional-text"> дают простор для самовыражения и экспериментируют с различными стилями и ритмами. Их движения часто импровизационные и динамичные, отражающие актуальные тенденции в искусстве.</div></div>
+          </div>
+    <div class="item item3">
+        <div class="style-text">
+          <h1>Классические танцы</h1><div class="additional-text">основываются на строгой технике и изящных линиях, как в балете. Эти танцы требуют высокой физической подготовки и артистизма.</div></div>
+          </div>
+    <div class="item item4">
+        <div class="style-text"><h1>Народные танцы</h1><div class="additional-text">отражают культуру и традиции конкретного народа, сохраняя их уникальные черты. Они исполняются в ярких костюмах и часто сопровождаются живой музыкой.</div></div>
+           </div>
+    <div class="item item5">
+        <div class="style-text"><h1>Бальные танцы</h1><div class="additional-text">сочетают грацию и строгость движений, исполняясь в паре на соревнованиях и вечерах. Они включают в себя как медленные, так и быстрые ритмы, такие как вальс и ча-ча-ча.</div></div>
+    </div>
+    <div class="item item6">
+      <div class="style-text">Присоединяйтесь к нам, чтобы двигаться с удовольствием, развивать грацию и уверенность в себе. Откройте для себя мир танца вместе с нами!</div>
+    </div>
+    <a href="C:\Users\kotly\OneDrive\Рабочий стол\VS Code\курсач\KnoopsM.html">
+        <div class="item item7">
+            <a href="C:\Users\kotly\OneDrive\Рабочий стол\VS Code\курсач\KnoopsM.html">
+                <div class="style-text">ЗАПИСАТЬСЯ НА ПРОБНОЕ ЗАНЯТИЕ!</div>
+            </a>
+            
+              </div>
+            </div>
+
+</main>
+
+
+<footer class="footer-container">
+    <div class="footer-column about">
+        <h3>Начни танцевать сегодня!</h3>
+        <p>Танец — это путь к гармонии с собой и окружающим миром. 
+            Присоединяйтесь к нашим занятиям и откройте для себя новый источник радости и вдохновения. </p>
+    </div>
+    <div class="footer-column quick-links">
+        <h3>Навигация</h3>
+        <ul>
+          <li><a href="main.html">Главная</a></li>
+          <li><a href="styles.html">Стили и направления</a></li>
+          <li><a href="about.html">О НАС</a></li>
+          <li><a href="merch.html">Мерч</a></li>
+          <li><a href="form.html">Пробное занятие</a></li>
+        </ul>
+    </div>
+    <div class="footer-column shop">
+        <h3>Занятия</h3>
+        <ul>
+            <li><a href="#">Бальные танцы</a></li>
+            <li><a href="#">Контемп</a></li>
+            <li><a href="#">Класический танец</a></li>
+            <li><a href="#">Современный танец</a></li>
+        </ul>
+    </div>
+    <div class="footer-column contact">
+        <h3>Контактная информация</h3>
+        <p>г.Москва, ул.Лабочевского, д.24</p>
+        <p>+7 978 714-70-06</p>
+        <p>kotlyar2006@gmail.ru</p>
+        <div class="social-icons">
+            <a href="#"><i class="icon fab fa-youtube"></i></a>
+            <a href="#"><i class="icon fab fa-vk"></i></a>
+            <a href="#"><i class="icon fab fa-telegram"></i></a>
+            <a href="#"><i class="icon fas fa-user"></i></a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
