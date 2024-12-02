@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabriela&family=Poiret+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="menu_footer.css">
+<title>Главная</title>
+<style>
+   
+.parallax-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  flex-direction: column;
+}
+
+.parallax-text{
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 1.9);
+    font-weight: 400;
+    max-width: 60%;
+}
+
+.parallax-text h1{
+    font-size: 5vw;
+}
+
+.parallax-text h3{
+    font-size: 2vw;
+}
+
+.parallax-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%; /* Больше, чем высота окна для параллакса */
+  background-image: url('https://images.unsplash.com/photo-1504609813442-a8924e83f76e?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  transform: translateY(0); /* Начальное смещение */
+  z-index: -1;
+}
+
+.content-section {
+  padding: 50px;
+  background: linear-gradient( #fff, #f39c12);
+  text-align: center;
+  margin-bottom: 0;
+  color: rgb(62, 41, 2);
+  
+ 
+}
+
+#dynamic-content {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #333;
+}
+
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn {
+    position: relative;
+    color: #fff;
+    width: 250px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    background-color: #ff2600;
+    overflow: hidden;
+    font-family: "Poiret One", serif;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+
+
+.btn-1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-100%);
+    transition: transform 0.3s;
+}
+
+.btn-1:hover {
+    transform: scale(1.1);
+    background-color: #fc6944;
+    
+}
+
+.btn-1:hover::before {
+    transform: translateY(0);
+}
+
+
+
+.btn-2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+}
+
+.btn-2:hover {
+    transform: scale(1.1);
+    background-color: #ff2600;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-2:hover::before {
+    transform: translateX(0);
+}
+
+
+
+
+main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .why-dance {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .why-dance .card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .why-dance .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .why-dance .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            background-position: center;
+            background-size: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .why-dance h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .why-dance .text-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease;
+        }
+
+        .why-dance .card:hover .text-content {
+            max-height: 300px; /* Ограничение высоты, чтобы избежать слишком большого блока */
+        }
+
+        .why-dance .text-content.visible {
+            max-height: 300px;
+        }
+
+        .why-dance p {
+            margin: 0;
+            color: #555;
+        }
+
+        
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+</style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+          <div class="logo">МирТанца</div>
+          <button class="menu-toggle" aria-label="Toggle menu">
+            ☰
+          </button>
+          <ul class="menu">
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="styles.html">Стили и направления</a></li>
+            <li><a href="about.html">О НАС</a></li>
+            <li><a href="merch.html">Мерч</a></li>
+            <li><a href="form.html">Пробное занятие</a></li>
+          </ul>
+        </nav>
+      </header>
+    
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('active');
+  });
+});
+
+      </script>
+
+    <div class="parallax-section">
+        <div class="parallax-background"></div>
+        <div class="parallax-text">
+            <h1>Танцы — Искусство, Энергия, Жизнь</h1>
+        </div>
+        </div>
+    
+      <section class="content-section">
+        <h2>Добро пожаловать в мир танца</h2>
+        <div class="intro">
+            <p>Место, где тело становится инструментом искусства, а движения рассказывают истории. Танцы — это не просто хобби или спорт, это способ выражения эмоций, самореализация и бесконечное вдохновение.</p>
+        </div>
+        
+        <main>
+            <section class="fade-in">
+                <h2>Почему танцы?</h2>
+                <div class="why-dance">
+                    <div class="card" onclick="toggleText(this)">
+                        <div class="image-placeholder" style="background-image: url('Рис_1.webp');"></div>
+                        <h3>Эмоции и энергия</h3>
+                        <div class="text-content">
+                            <p>Танцы позволяют выплеснуть эмоции, почувствовать свободу и зарядиться энергией. Каждый шаг на танцполе — это возможность рассказать свою историю.</p>
+                        </div>
+                    </div>
+        
+                    <div class="card" onclick="toggleText(this)">
+                        <div class="image-placeholder" style="background-image: url('Рис_2.webp');"></div>
+                        <h3>Здоровье и сила</h3>
+                        <div class="text-content">
+                            <p>Занятия танцами укрепляют мышцы, улучшают осанку, развивают гибкость и координацию. А главное — они дарят радость и повышают общий тонус организма.</p>
+                        </div>
+                    </div>
+        
+                    <div class="card" onclick="toggleText(this)">
+                        <div class="image-placeholder" style="background-image: url('Рис_3.webp');"></div>
+                        <h3>Самовыражение</h3>
+                        <div class="text-content">
+                            <p>В каждом стиле — от классического балета до зажигательного хип-хопа — вы найдете свой уникальный способ самовыражения. Танец не имеет границ: он для всех, независимо от возраста и уровня подготовки.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script>
+            function toggleText(card) {
+                const textContent = card.querySelector('.text-content');
+                textContent.classList.toggle('visible');
+            }
+        
+            // Появление секций по мере прокрутки
+            const sections = document.querySelectorAll('section');
+        
+            function showOnScroll() {
+                const triggerBottom = window.innerHeight / 5 * 4;
+        
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    if (sectionTop < triggerBottom) {
+                        section.classList.add('show');
+                    } else {
+                        section.classList.remove('show');
+                    }
+                });
+            }
+        
+            window.addEventListener('scroll', showOnScroll);
+        </script>
+        
+        <div class="button-container">
+            <a href="form.html">
+                <button class="btn btn-1">Пробный урок</button>
+            </a>
+            <a href="form.html">
+                <button class="btn btn-2" href="form.html">Обучение педагогов</button>
+            </a>
+        </div>
+        
+      </section>
+
+<script>
+// Устанавливаем коэффициент параллакса
+const parallaxFactor = 0.7;
+const parallaxBackground = document.querySelector('.parallax-background');
+const dynamicContent = document.getElementById('dynamic-content');
+
+// Добавляем обработчик события для прокрутки
+window.addEventListener('scroll', () => {
+  // Получаем текущее значение прокрутки
+  const scrollY = window.scrollY;
+
+  // Параллакс-эффект: изменяем положение фона
+  parallaxBackground.style.transform = `translateY(${scrollY * parallaxFactor}px)`;
+
+  // Обновляем содержимое на странице в зависимости от позиции прокрутки
+  dynamicContent.textContent = `Текущая позиция прокрутки: ${scrollY}px`;
+});
+
+</script>
+
+<footer class="footer-container">
+    <div class="footer-column about">
+        <h3>Начни танцевать сегодня!</h3>
+        <p>Танец — это путь к гармонии с собой и окружающим миром. 
+            Присоединяйтесь к нашим занятиям и откройте для себя новый источник радости и вдохновения. </p>
+    </div>
+    <div class="footer-column quick-links">
+        <h3>Навигация</h3>
+        <ul>
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="styles.html">Стили и направления</a></li>
+            <li><a href="about.html">О НАС</a></li>
+            <li><a href="merch.html">Мерч</a></li>
+            <li><a href="form.html">Пробное занятие</a></li>
+        </ul>
+    </div>
+    <div class="footer-column shop">
+        <h3>Занятия</h3>
+        <ul>
+            <li><a href="#">Бальные танцы</a></li>
+            <li><a href="#">Контемп</a></li>
+            <li><a href="#">Класический танец</a></li>
+            <li><a href="#">Современный танец</a></li>
+        </ul>
+    </div>
+    <div class="footer-column contact">
+        <h3>Контактная информация</h3>
+        <p>г.Москва, ул.Лабочевского, д.24</p>
+        <p>+7 978 714-70-06</p>
+        <p>kotlyar2006@gmail.ru</p>
+        <div class="social-icons">
+            <a href="#"><i class="icon fab fa-youtube"></i></a>
+            <a href="#"><i class="icon fab fa-vk"></i></a>
+            <a href="#"><i class="icon fab fa-telegram"></i></a>
+            <a href="#"><i class="icon fas fa-user"></i></a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
